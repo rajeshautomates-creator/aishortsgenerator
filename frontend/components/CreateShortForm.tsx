@@ -5,8 +5,10 @@ import { jobApi } from '@/lib/api';
 import { PlusCircle, Loader2, Wand2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+import { Job } from '@/lib/types';
+
 interface CreateShortFormProps {
-    onJobCreated: (job: any) => void;
+    onJobCreated: (job: Job) => void;
 }
 
 export default function CreateShortForm({ onJobCreated }: CreateShortFormProps) {

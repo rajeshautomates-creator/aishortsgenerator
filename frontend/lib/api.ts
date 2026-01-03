@@ -1,5 +1,5 @@
 import axios from 'axios';
-import cookieCutter from 'cookie-cutter';
+// import cookieCutter from 'cookie-cutter';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 

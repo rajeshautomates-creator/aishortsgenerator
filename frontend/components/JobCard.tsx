@@ -20,7 +20,7 @@ import { cn, formatDate } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface JobCardProps {
-    initialJob: any;
+    initialJob: Job;
     onDelete: (id: string) => void;
 }
 
@@ -30,7 +30,7 @@ export default function JobCard({ initialJob, onDelete }: JobCardProps) {
     const [showPreview, setShowPreview] = useState(false);
 
     useEffect(() => {
-        let interval: NodeJS.Timeout;
+        let interval: any;
 
         if (job.status === 'pending' || job.status === 'processing') {
             interval = setInterval(async () => {
