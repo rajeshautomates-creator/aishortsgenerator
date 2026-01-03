@@ -61,15 +61,14 @@ docker-compose up --build
 
 ## 🚢 Deployment (Dokploy)
 
-1. Create a new service on Dokploy.
-2. Link your GitHub repository.
-3. Add the following environment variables:
-   - `OPENAI_API_KEY`
-   - `ELEVENLABS_API_KEY`
-   - `ADMIN_PASSWORD`
-   - `JWT_SECRET`
-4. Set the build context for each service (frontend/backend).
-5. Deploy!
+For detailed step-by-step instructions, see the [Dokploy Deployment Guide](./DOKPLOY_DEPLOYMENT.md).
+
+1. Create a new project in Dokploy.
+2. Create an **Application** for the Backend (`backend/Dockerfile`, context `backend`).
+3. Set environment variables (`OPENAI_API_KEY`, `ELEVENLABS_API_KEY`, etc.).
+4. Create an **Application** for the Frontend (`frontend/Dockerfile`, context `frontend`).
+5. Set `NEXT_PUBLIC_API_URL` to your backend URL.
+6. Deploy!
 
 ## 📄 License
 
