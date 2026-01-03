@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { JobService } from '../services/job.service.js';
 import logger from '../utils/logger.js';
-import path from 'path';
+// import path from 'path';
 
 export class JobController {
     static async createJob(req: Request, res: Response) {
@@ -31,7 +31,7 @@ export class JobController {
         return res.json(job);
     }
 
-    static async getAllJobs(req: Request, res: Response) {
+    static async getAllJobs(_req: Request, res: Response) {
         const jobs = JobService.getAllJobs();
         return res.json(jobs);
     }

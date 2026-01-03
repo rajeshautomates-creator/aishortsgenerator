@@ -14,7 +14,7 @@ export class AuthController {
         return res.status(401).json({ message: 'Invalid password' });
     }
 
-    static verify(req: Request, res: Response) {
+    static verify(_req: Request, res: Response) {
         // If it reached here, the middleware already verified it
         return res.json({ valid: true, admin: true });
     }
