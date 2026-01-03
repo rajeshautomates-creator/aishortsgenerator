@@ -6,7 +6,7 @@ import JobCard from '@/components/JobCard';
 import { jobApi } from '@/lib/api';
 import { Job } from '@/lib/types';
 import { Loader2, Video, Inbox, Sparkles } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 export default function DashboardPage() {
     const [jobs, setJobs] = useState<Job[]>([]);

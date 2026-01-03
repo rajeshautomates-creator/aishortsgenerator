@@ -1,0 +1,29 @@
+﻿
+> frontend@0.1.0 lint
+> eslint
+
+
+E:\saas product\SaaSproduct\aishortsgen\frontend\app\dashboard\layout.tsx
+  4:19  warning  'LayoutDashboard' is defined but never used  @typescript-eslint/no-unused-vars
+  4:44  warning  'Settings' is defined but never used         @typescript-eslint/no-unused-vars
+  8:10  warning  'motion' is defined but never used           @typescript-eslint/no-unused-vars
+
+E:\saas product\SaaSproduct\aishortsgen\frontend\app\dashboard\page.tsx
+  9:10  warning  'motion' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\saas product\SaaSproduct\aishortsgen\frontend\app\page.tsx
+  21:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\saas product\SaaSproduct\aishortsgen\frontend\components\AuthProvider.tsx
+  37:22  warning  '_error' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\saas product\SaaSproduct\aishortsgen\frontend\components\CreateShortForm.tsx
+   6:10  warning  'motion' is defined but never used        @typescript-eslint/no-unused-vars
+  31:23  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\saas product\SaaSproduct\aishortsgen\frontend\components\JobCard.tsx
+  33:23  error    Unexpected any. Specify a different type           @typescript-eslint/no-explicit-any
+  62:11  warning  'statusColors' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+Γ£û 10 problems (3 errors, 7 warnings)
+

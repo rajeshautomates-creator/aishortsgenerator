@@ -30,7 +30,7 @@ export default function JobCard({ initialJob, onDelete }: JobCardProps) {
     const [showPreview, setShowPreview] = useState(false);
 
     useEffect(() => {
-        let interval: any;
+        let interval: ReturnType<typeof setInterval> | undefined;
 
         if (job.status === 'pending' || job.status === 'processing') {
             interval = setInterval(async () => {
@@ -39,7 +39,7 @@ export default function JobCard({ initialJob, onDelete }: JobCardProps) {
                     setJob(updatedJob);
 
                     if (updatedJob.status === 'completed' || updatedJob.status === 'failed') {
-                        clearInterval(interval);
+                        if (interval) clearInterval(interval);
                     }
                 } catch (error) {
                     console.error('Failed to poll job status:', error);
@@ -57,13 +57,6 @@ export default function JobCard({ initialJob, onDelete }: JobCardProps) {
             await jobApi.delete(job.id);
             onDelete(job.id);
         }
-    };
-
-    const statusColors = {
-        pending: 'text-muted-foreground',
-        processing: 'text-primary',
-        completed: 'text-green-500',
-        failed: 'text-destructive',
     };
 
     const statusIcons = {

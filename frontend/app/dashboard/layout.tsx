@@ -1,11 +1,11 @@
 'use client';
 
 import { useAuth } from '@/components/AuthProvider';
-import { Youtube, LayoutDashboard, LogOut, Settings, Video } from 'lucide-react';
+import { Youtube, LogOut, Video } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 
 export default function DashboardLayout({
     children,

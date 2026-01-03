@@ -18,8 +18,9 @@ export default function LoginPage() {
 
     try {
       await login(password);
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to login. Please check your password.');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? (err as { response?: { data?: { message?: string } } }).response?.data?.message || err.message : 'Failed to login. Please check your password.';
+      setError(errorMessage);
     } finally {
       setIsLoggingIn(false);
     }

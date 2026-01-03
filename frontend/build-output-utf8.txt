@@ -1,0 +1,194 @@
+﻿
+> frontend@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.1.1 (Turbopack)
+
+  Creating an optimized production build ...
+node.exe : Error: 
+Cannot apply unknown 
+utility class `focus-
+visible:ring-ring`
+At line:1 char:1
++ & "D:\App install\n
+odejs/node.exe" 
+"D:\App install\nodej
+s/node_module ...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (Error:    
+ Cannot a...ible:    
+ring-ring`:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+    [2m[at 
+onInvalidCandidate 
+(E:\saas product\SaaS
+product\aishortsgen\f
+rontend\node_modules\
+tailwindcss\dist\lib.
+js:21:1511)][0m
+    [2m[at Te 
+(E:\saas product\SaaS
+product\aishortsgen\f
+rontend\node_modules\
+tailwindcss\dist\lib.
+js:16:36652)][0m
+    [2m[at E:\saas p
+roduct\SaaSproduct\ai
+shortsgen\frontend\no
+de_modules\tailwindcs
+s\dist\lib.js:21:355]
+[0m
+    [2m[at Rr 
+(E:\saas product\SaaS
+product\aishortsgen\f
+rontend\node_modules\
+tailwindcss\dist\lib.
+js:3:1718)][0m
+    [2m[at _ 
+(E:\saas product\SaaS
+product\aishortsgen\f
+rontend\node_modules\
+tailwindcss\dist\lib.
+js:3:1377)][0m
+    [2m[at $e 
+(E:\saas product\SaaS
+product\aishortsgen\f
+rontend\node_modules\
+tailwindcss\dist\lib.
+js:21:172)][0m
+    [2m[at un 
+(E:\saas product\SaaS
+product\aishortsgen\f
+rontend\node_modules\
+tailwindcss\dist\lib.
+js:38:294)][0m
+    [2m[at async cn 
+(E:\saas product\SaaS
+product\aishortsgen\f
+rontend\node_modules\
+tailwindcss\dist\lib.
+js:38:631)][0m
+    [2m[at async Xr 
+(E:\saas product\SaaS
+product\aishortsgen\f
+rontend\node_modules\
+@tailwindcss\node\dis
+t\index.js:10:3417)]
+[0m
+    [2m[at async I 
+(E:\saas product\SaaS
+product\aishortsgen\f
+rontend\node_modules\
+@tailwindcss\postcss\
+dist\index.js:10:3977
+)][0m
+
+> Build error 
+occurred
+Error: Turbopack 
+build failed with 1 
+errors:
+./app/globals.css
+Error evaluating 
+Node.js code
+CssSyntaxError: 
+tailwindcss: E:\saas 
+product\SaaSproduct\a
+ishortsgen\frontend\a
+pp\globals.css:1:1: 
+Cannot apply unknown 
+utility class `focus-
+visible:ring-ring`
+    at Input.error (n
+ode_modules/postcss/l
+ib/input.js:135:16) 
+[E:\saas product\SaaS
+product\aishortsgen\f
+rontend\.next\build\c
+hunks\node_modules_fe
+693df6._.js:4651:22]
+    at Root.error (no
+de_modules/postcss/li
+b/node.js:146:32) 
+[E:\saas product\SaaS
+product\aishortsgen\f
+rontend\.next\build\c
+hunks\node_modules_fe
+693df6._.js:928:38]
+    [at Object.Once 
+(E:\saas product\SaaS
+product\aishortsgen\f
+rontend\node_modules\
+@tailwindcss\postcss\
+dist\index.js:10:6911
+)]
+    at async 
+LazyResult.runAsync (
+node_modules/postcss/
+lib/lazy-result.js:29
+3:11) [E:\saas produc
+t\SaaSproduct\aishort
+sgen\frontend\.next\b
+uild\chunks\node_modu
+les_fe693df6._.js:620
+6:21]
+    at async 
+transform (turbopack:
+///[turbopack-node]/t
+ransforms/postcss.ts:
+70:34) [E:\saas produ
+ct\SaaSproduct\aishor
+tsgen\frontend\.next\
+build\chunks\[root-of
+-the-server]__51225da
+f._.js:146:36]
+    at async run (tur
+bopack:///[turbopack-
+node]/ipc/evaluate.ts
+:92:23) [E:\saas prod
+uct\SaaSproduct\aisho
+rtsgen\frontend\.next
+\build\chunks\[root-o
+f-the-server]__974941
+ed._.js:443:31]
+
+Import trace:
+  Client Component 
+Browser:
+    
+./app/globals.css 
+[Client Component 
+Browser]
+    ./app/layout.tsx 
+[Server Component]
+
+
+    at async 
+transform (turbopack:
+///[turbopack-node]/t
+ransforms/postcss.ts:
+70:34) [E:\saas produ
+ct\SaaSproduct\aishor
+tsgen\frontend\.next\
+build\chunks\[root-of
+-the-server]__51225da
+f._.js:146:36])
+    at async run (tur
+bopack:///[turbopack-
+node]/ipc/evaluate.ts
+:92:23) [E:\saas prod
+uct\SaaSproduct\aisho
+rtsgen\frontend\.next
+\build\chunks\[root-o
+f-the-server]__974941
+ed._.js:443:31])

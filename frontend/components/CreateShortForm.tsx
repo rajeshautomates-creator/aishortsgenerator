@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { jobApi } from '@/lib/api';
 import { PlusCircle, Loader2, Wand2 } from 'lucide-react';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 
 import { Job } from '@/lib/types';
 
@@ -28,8 +28,9 @@ export default function CreateShortForm({ onJobCreated }: CreateShortFormProps) 
             const job = await jobApi.create(topic, duration);
             onJobCreated(job);
             setTopic('');
-        } catch (err: any) {
-            setError(err.response?.data?.message || 'Failed to start AI generation.');
+        } catch (err: unknown) {
+            const errorMessage = err instanceof Error ? (err as { response?: { data?: { message?: string } } }).response?.data?.message || err.message : 'Failed to start AI generation.';
+            setError(errorMessage);
         } finally {
             setIsLoading(false);
         }
