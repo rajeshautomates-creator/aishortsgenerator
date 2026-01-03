@@ -36,7 +36,7 @@ SCENE 2: [text for scene 2]
 Make it viral-worthy!`;
 
             const response = await openai.chat.completions.create({
-                model: 'gpt-4',
+                model: 'gpt-4o-mini',
                 messages: [
                     {
                         role: 'system',
