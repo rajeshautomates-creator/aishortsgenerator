@@ -13,7 +13,7 @@ COPY . .
 
 # Set build-time environment variables
 ARG NEXT_PUBLIC_API_URL
-ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_API_URL=https://api.studio.rajeshautomates.in
 
 # Build Next.js
 # Note: Ensure NEXT_PUBLIC_API_URL is provided during build if you want to hardcode it
