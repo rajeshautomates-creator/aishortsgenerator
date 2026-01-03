@@ -119,7 +119,7 @@ Make it viral-worthy!`;
                 quality: 'standard',
             });
 
-            const imageUrl = response.data[0]?.url;
+            const imageUrl = response.data?.[0]?.url;
 
             if (!imageUrl) {
                 throw new Error('No image URL in response');

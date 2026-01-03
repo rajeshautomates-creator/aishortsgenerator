@@ -1,12 +1,12 @@
 import { v4 as uuidv4 } from 'uuid';
-import { jobStore, Job, Scene } from '../models/job.model.js';
+import { jobStore, Job } from '../models/job.model.js';
 import { OpenAIService } from './openai.service.js';
 import { ElevenLabsService } from './elevenlabs.service.js';
 import { FFmpegService } from './ffmpeg.service.js';
 import { FileManager } from '../utils/fileManager.js';
 import config from '../config/env.js';
 import logger from '../utils/logger.js';
-import path from 'path';
+// import path from 'path';
 
 export class JobService {
     /**

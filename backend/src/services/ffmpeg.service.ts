@@ -12,13 +12,11 @@ export class FFmpegService {
         let srtContent = '';
         let currentTime = 0;
 
-        scenes.forEach((scene, index) => {
-            const startTime = this.formatSrtTime(currentTime);
-            currentTime += scene.duration;
-            const endTime = this.formatSrtTime(currentTime);
+        scenes.forEach((_scene, _index) => {
+            currentTime += _scene.duration;
 
             // Split long text into multiple subtitle entries
-            const words = scene.text.split(' ');
+            const words = _scene.text.split(' ');
             const chunks: string[] = [];
             let currentChunk = '';
 
@@ -35,15 +33,15 @@ export class FFmpegService {
                 chunks.push(currentChunk.trim());
             }
 
-            const chunkDuration = scene.duration / chunks.length;
-            let chunkTime = currentTime - scene.duration;
+            const chunkDuration = _scene.duration / chunks.length;
+            let chunkTime = currentTime - _scene.duration;
 
             chunks.forEach((chunk, chunkIndex) => {
                 const chunkStart = this.formatSrtTime(chunkTime);
                 chunkTime += chunkDuration;
                 const chunkEnd = this.formatSrtTime(chunkTime);
 
-                srtContent += `${index * 10 + chunkIndex + 1}\n`;
+                srtContent += `${_index * 10 + chunkIndex + 1}\n`;
                 srtContent += `${chunkStart} --> ${chunkEnd}\n`;
                 srtContent += `${chunk}\n\n`;
             });

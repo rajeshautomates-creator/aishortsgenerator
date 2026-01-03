@@ -11,7 +11,8 @@ export const authMiddleware = (req: AuthRequest, res: Response, next: NextFuncti
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
-        return res.status(401).json({ message: 'Unauthorized' });
+        res.status(401).json({ message: 'Unauthorized' });
+        return;
     }
 
     const token = authHeader.split(' ')[1];
@@ -20,8 +21,10 @@ export const authMiddleware = (req: AuthRequest, res: Response, next: NextFuncti
         const decoded = jwt.verify(token, config.jwtSecret) as { admin: boolean };
         req.admin = decoded.admin;
         next();
+        return;
     } catch (error) {
         logger.error('JWT verification failed:', error);
-        return res.status(401).json({ message: 'Invalid token' });
+        res.status(401).json({ message: 'Invalid token' });
+        return;
     }
 };

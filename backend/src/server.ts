@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
-import { fileURLToPath } from 'url';
+// import { fileURLToPath } from 'url';
 import config from './config/env.js';
 import logger from './utils/logger.js';
 import authRoutes from './routes/auth.js';
@@ -9,8 +9,8 @@ import jobRoutes from './routes/jobs.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import { FileManager } from './utils/fileManager.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -31,7 +31,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/jobs', jobRoutes);
 
 // Health check
-app.get('/health', (req, res) => {
+app.get('/health', (_req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
