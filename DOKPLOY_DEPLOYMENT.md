@@ -92,6 +92,16 @@ This guide provides step-by-step instructions to deploy the AI YouTube Shorts Ge
 ## Troubleshooting
 
 *   **FFmpeg errors**: Ensure the backend is using the `Dockerfile` which installs `ffmpeg`.
-*   **CORS errors**: Ensure the Backend has the correct `FRONTEND_URL` environment variable if you added that logic (currently not strictly enforced in the provided code for simplicity, but good to have).
-*   **Build failures (Dockerfile not found)**: In a monorepo, Dokploy often needs the **Dockerfile Path** relative to the *repository root*, even if you set a specific **Context Path**. Use `backend/Dockerfile` and `backend` as the context to ensure everything finds the correct files.
-*   **Missing `package-lock.json`**: Make sure the lock files (now included in the repo) are being copied. Setting the **Context Path** to `backend` ensures that `COPY package*.json ./` inside the Dockerfile finds the correct files.
+*   **JWT Secret Generation**: To generate a secure `JWT_SECRET`, run this command in your local terminal:
+    ```bash
+    node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+    ```
+*   **Build failures (Dockerfile not found)**: In a monorepo, exactly follow these settings:
+    *   **Backend**: 
+        *   `Dockerfile Path`: `backend/Dockerfile`
+        *   `Context Path`: `backend`
+    *   **Frontend**:
+        *   `Dockerfile Path`: `frontend/Dockerfile`
+        *   `Context Path`: `frontend`
+*   **TypeScript Errors**: All the "unused variable" errors have been fixed in the latest commit. Ensure you are deploying the latest version of the `main` branch.
+*   **Networking**: If the frontend cannot reach the backend, double-check that `NEXT_PUBLIC_API_URL` includes `https://` and does **not** have a trailing slash.

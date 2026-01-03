@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Job, Scene } from '@/lib/types'; // I'll create this file next
+import { Job } from '@/lib/types';
 import { jobApi } from '@/lib/api';
 import {
     CheckCircle2,
@@ -25,7 +25,7 @@ interface JobCardProps {
 }
 
 export default function JobCard({ initialJob, onDelete }: JobCardProps) {
-    const [job, setJob] = useState(initialJob);
+    const [job, setJob] = useState<Job>(initialJob);
     const [showLogs, setShowLogs] = useState(false);
     const [showPreview, setShowPreview] = useState(false);
 

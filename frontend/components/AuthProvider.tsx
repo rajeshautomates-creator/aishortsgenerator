@@ -34,7 +34,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             try {
                 await authApi.verify();
                 setIsAdmin(true);
-            } catch (error) {
+            } catch (_error) {
                 localStorage.removeItem('token');
                 setIsAdmin(false);
                 if (pathname !== '/') {

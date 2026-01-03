@@ -1,0 +1,10 @@
+node_modules
+.git
+.next
+dist
+uploads
+outputs
+.env
+.env.local
+.vscode
+*.log
