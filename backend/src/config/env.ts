@@ -18,7 +18,7 @@ const config: Config = {
     nodeEnv: process.env.NODE_ENV || 'development',
     openaiApiKey: process.env.OPENAI_API_KEY || '',
     elevenlabsApiKey: process.env.ELEVENLABS_API_KEY || '',
-    adminPassword: process.env.ADMIN_PASSWORD || 'admin123',
+    adminPassword: process.env.ADMIN_PASSWORD || 'Rajesh#3210',
     jwtSecret: process.env.JWT_SECRET || 'your-secret-key-change-in-production',
     uploadsDir: process.env.UPLOADS_DIR || './uploads',
     outputsDir: process.env.OUTPUTS_DIR || './outputs',
