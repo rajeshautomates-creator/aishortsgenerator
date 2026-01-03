@@ -44,6 +44,12 @@ app.listen(PORT, () => {
     logger.info(`🚀 Server running on port ${PORT} in ${config.nodeEnv} mode`);
     const passSource = process.env.ADMIN_PASSWORD ? 'Environment Variable' : 'Default Code Password';
     logger.info(`🔐 Admin access: ${passSource} (Length: ${config.adminPassword.length})`);
+
+    // Masked API key logging for verification
+    const mask = (key: string) => key ? `${key.substring(0, 4)}****` : 'NOT SET';
+    logger.info(`🔑 OpenAI Key check: ${mask(config.openaiApiKey)}`);
+    logger.info(`🔑 ElevenLabs Key check: ${mask(config.elevenlabsApiKey)}`);
+
     logger.info(`📂 Uploads directory: ${path.resolve(config.uploadsDir)}`);
     logger.info(`🎬 Outputs directory: ${path.resolve(config.outputsDir)}`);
 });

@@ -16,8 +16,8 @@ interface Config {
 const config: Config = {
     port: parseInt(process.env.PORT || '5000', 10),
     nodeEnv: process.env.NODE_ENV || 'development',
-    openaiApiKey: process.env.OPENAI_API_KEY || '',
-    elevenlabsApiKey: process.env.ELEVENLABS_API_KEY || '',
+    openaiApiKey: (process.env.OPENAI_API_KEY || '').trim(),
+    elevenlabsApiKey: (process.env.ELEVENLABS_API_KEY || '').trim(),
     adminPassword: process.env.ADMIN_PASSWORD || 'Rajesh#3210',
     jwtSecret: process.env.JWT_SECRET || 'your-secret-key-change-in-production',
     uploadsDir: process.env.UPLOADS_DIR || './uploads',
