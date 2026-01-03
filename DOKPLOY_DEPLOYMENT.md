@@ -30,7 +30,7 @@ This guide provides step-by-step instructions to deploy the AI YouTube Shorts Ge
     *   **Branch**: `main`
     *   **Build Type**: Dockerfile
     *   **Dockerfile Path**: `backend/Dockerfile`
-    *   **Context Path**: `backend` (Important: This ensures Docker finds the package.json)
+    *   **Context Path**: `./` (Root directory)
 
 3.  **Environment Variables**:
     Add the following variables in the **Environment** tab:
@@ -66,7 +66,7 @@ This guide provides step-by-step instructions to deploy the AI YouTube Shorts Ge
     *   **Branch**: `main`
     *   **Build Type**: Dockerfile
     *   **Dockerfile Path**: `frontend/Dockerfile`
-    *   **Context Path**: `frontend`
+    *   **Context Path**: `./` (Root directory)
 
 3.  **Environment Variables**:
     *   `NEXT_PUBLIC_API_URL`: Use the **Backend URL** you copied in Step 2.
