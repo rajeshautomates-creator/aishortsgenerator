@@ -81,11 +81,13 @@ This guide provides step-by-step instructions to deploy the AI YouTube Shorts Ge
 
 ## Step 4: Verification
 
-1.  Open the Frontend URL provided by Dokploy.
-2.  You should see the login page.
-3.  Enter the `ADMIN_PASSWORD` you set in the Backend environment variables.
-4.  Try creating a short with a topic like "The future of space exploration".
-5.  Monitor the logs in both Dokploy services if anything fails.
+1.  **Check Backend**: Open `https://your-backend-url.com/health`. You should see `{"status":"ok"}`. (Note: Opening just the base URL will show "Cannot GET /" which is normal).
+2.  **Check Frontend**: Open the Frontend URL provided by Dokploy.
+3.  You should see the login page.
+4.  Enter the `ADMIN_PASSWORD` you set in the Backend environment variables.
+5.  Try creating a short with a topic like "The future of space exploration".
+6.  Monitor the logs in both Dokploy services if anything fails.
+
 
 ---
 
