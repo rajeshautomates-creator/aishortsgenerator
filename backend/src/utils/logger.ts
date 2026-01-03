@@ -15,12 +15,12 @@ const logger = winston.createLogger({
         new winston.transports.Console({
             format: winston.format.combine(
                 winston.format.colorize(),
-                winston.format.simple()
+                winston.format.timestamp({ format: 'HH:mm:ss' }),
+                winston.format.printf(({ timestamp, level, message }) => {
+                    return `[${timestamp}] ${level}: ${message}`;
+                })
             ),
         }),
-        // Optional file logging (will fail gracefully if directory missing in some environments)
-        new winston.transports.File({ filename: 'logs/error.log', level: 'error' }),
-        new winston.transports.File({ filename: 'logs/combined.log' }),
     ],
 });
 
