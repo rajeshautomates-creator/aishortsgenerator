@@ -12,7 +12,7 @@ export class ElevenLabsService {
      */
     static async generateVoice(text: string, jobDir: string): Promise<string> {
         try {
-            logger.info('Generating voice narration...');
+            logger.info(`Generating voice narration (Key: ${config.elevenlabsApiKey.substring(0, 4)}****)...`);
 
             // Use a default voice ID (you can make this configurable)
             const voiceId = 'EXAVITQu4vr4xnSDxMaL'; // Rachel voice
