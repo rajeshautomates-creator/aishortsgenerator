@@ -105,5 +105,12 @@ This guide provides step-by-step instructions to deploy the AI YouTube Shorts Ge
     *   **Frontend**:
         *   `Dockerfile Path`: `frontend/Dockerfile`
         *   `Context Path`: `frontend`
-*   **TypeScript Errors**: All the "unused variable" errors have been fixed in the latest commit. Ensure you are deploying the latest version of the `main` branch.
+*   **Network Error on Login**: This is almost always caused by an incorrect or missing `NEXT_PUBLIC_API_URL`.
+    *   **The Cause**: Next.js "bakes in" this URL during the build process. If it's missing or set after deployment, the frontend might still be trying to connect to `http://localhost:5000`.
+    *   **The Fix**:
+        1.  Go to your **Frontend** service in Dokploy.
+        2.  Go to the **Environment** tab.
+        3.  Ensure `NEXT_PUBLIC_API_URL` is set to your backend URL (e.g., `https://api.studio.rajeshautomates.in`).
+        4.  **Crucial**: Click **Deploy** again. A fresh build is required to inject the URL into the application.
+        5.  Check your browser's Developer Console (F12) -> Network tab to see exactly what URL the frontend is trying to call.
 *   **Networking**: If the frontend cannot reach the backend, double-check that `NEXT_PUBLIC_API_URL` includes `https://` and does **not** have a trailing slash.
