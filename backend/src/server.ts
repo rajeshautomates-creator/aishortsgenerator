@@ -42,6 +42,7 @@ const PORT = config.port;
 
 app.listen(PORT, () => {
     logger.info(`🚀 Server running on port ${PORT} in ${config.nodeEnv} mode`);
+    logger.info(`🔐 Admin access configured: ${process.env.ADMIN_PASSWORD ? 'Environment Variable' : 'Default Code Password'}`);
     logger.info(`📂 Uploads directory: ${path.resolve(config.uploadsDir)}`);
     logger.info(`🎬 Outputs directory: ${path.resolve(config.outputsDir)}`);
 });

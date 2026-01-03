@@ -4,7 +4,7 @@ import config from '../config/env.js';
 
 export class AuthController {
     static login(req: Request, res: Response) {
-        const { password } = req.body;
+        const password = (req.body.password || '').toString().trim();
 
         if (password === config.adminPassword) {
             const token = jwt.sign({ admin: true }, config.jwtSecret, { expiresIn: '7d' });
