@@ -11,21 +11,17 @@ const logger = winston.createLogger({
     ),
     defaultMeta: { service: 'ai-shorts-backend' },
     transports: [
-        new winston.transports.File({ filename: 'logs/error.log', level: 'error' }),
-        new winston.transports.File({ filename: 'logs/combined.log' }),
-    ],
-});
-
-// Console logging for development
-if (config.nodeEnv !== 'production') {
-    logger.add(
+        // Always log to console for Docker/Dokploy
         new winston.transports.Console({
             format: winston.format.combine(
                 winston.format.colorize(),
                 winston.format.simple()
             ),
-        })
-    );
-}
+        }),
+        // Optional file logging (will fail gracefully if directory missing in some environments)
+        new winston.transports.File({ filename: 'logs/error.log', level: 'error' }),
+        new winston.transports.File({ filename: 'logs/combined.log' }),
+    ],
+});
 
 export default logger;

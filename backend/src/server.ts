@@ -20,8 +20,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Ensure directories exist
-await FileManager.ensureDir(config.uploadsDir);
-await FileManager.ensureDir(config.outputsDir);
+try {
+    await FileManager.ensureDir('logs');
+    await FileManager.ensureDir(config.uploadsDir);
+    await FileManager.ensureDir(config.outputsDir);
+} catch (error) {
+    console.error('⚠️ Critical: Failed to initialize directories:', error);
+}
 
 // Static files for video preview (protected via frontend, or can be made public)
 app.use('/outputs', express.static(config.outputsDir));
