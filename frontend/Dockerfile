@@ -11,6 +11,10 @@ RUN npm ci
 # Copy source code
 COPY . .
 
+# Set build-time environment variables
+ARG NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+
 # Build Next.js
 # Note: Ensure NEXT_PUBLIC_API_URL is provided during build if you want to hardcode it
 # Or use it as a runtime env var if your architecture supports it
