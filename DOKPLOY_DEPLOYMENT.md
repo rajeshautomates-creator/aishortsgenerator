@@ -29,8 +29,8 @@ This guide provides step-by-step instructions to deploy the AI YouTube Shorts Ge
     *   **Repository**: `rajeshautomates-creator/aishortsgenerator`
     *   **Branch**: `main`
     *   **Build Type**: Dockerfile
-    *   **Dockerfile Path**: `Dockerfile`
-    *   **Context Path**: `backend` (Important: This points Dokploy to the correct folder)
+    *   **Dockerfile Path**: `backend/Dockerfile`
+    *   **Context Path**: `backend` (Points to the backend folder for npm commands)
 
 3.  **Environment Variables**:
     Add the following variables in the **Environment** tab:
@@ -65,7 +65,7 @@ This guide provides step-by-step instructions to deploy the AI YouTube Shorts Ge
     *   **Repository**: `rajeshautomates-creator/aishortsgenerator`
     *   **Branch**: `main`
     *   **Build Type**: Dockerfile
-    *   **Dockerfile Path**: `Dockerfile`
+    *   **Dockerfile Path**: `frontend/Dockerfile`
     *   **Context Path**: `frontend`
 
 3.  **Environment Variables**:
@@ -93,5 +93,5 @@ This guide provides step-by-step instructions to deploy the AI YouTube Shorts Ge
 
 *   **FFmpeg errors**: Ensure the backend is using the `Dockerfile` which installs `ffmpeg`.
 *   **CORS errors**: Ensure the Backend has the correct `FRONTEND_URL` environment variable if you added that logic (currently not strictly enforced in the provided code for simplicity, but good to have).
-*   **Build failures (`npm ci` error)**: This usually means the `package-lock.json` file is missing or out of sync. I have now included these files in the repository. Make sure you are using the correct **Context Path** as described above.
-*   **Check the Context Path**: In Dokploy, if you set the context to `backend`, the Dockerfile path should be `Dockerfile` (not `backend/Dockerfile`).
+*   **Build failures (Dockerfile not found)**: In a monorepo, Dokploy often needs the **Dockerfile Path** relative to the *repository root*, even if you set a specific **Context Path**. Use `backend/Dockerfile` and `backend` as the context to ensure everything finds the correct files.
+*   **Missing `package-lock.json`**: Make sure the lock files (now included in the repo) are being copied. Setting the **Context Path** to `backend` ensures that `COPY package*.json ./` inside the Dockerfile finds the correct files.
