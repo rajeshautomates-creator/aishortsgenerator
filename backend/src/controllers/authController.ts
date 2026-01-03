@@ -6,6 +6,9 @@ export class AuthController {
     static login(req: Request, res: Response) {
         const password = (req.body.password || '').toString().trim();
 
+        // Log lengths for debugging (safe)
+        console.log(`Login attempt: received length ${password.length}, expected length ${config.adminPassword.length}`);
+
         if (password === config.adminPassword) {
             const token = jwt.sign({ admin: true }, config.jwtSecret, { expiresIn: '7d' });
             return res.json({ token, admin: true });
