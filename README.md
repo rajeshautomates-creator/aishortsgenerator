@@ -5,7 +5,7 @@ A full-stack SaaS application that automatically generates vertical YouTube Shor
 ## 🚀 Features
 
 - **AI Script Generation**: Powered by OpenAI GPT-4 with focus on viral hooks.
-- **AI Image Generation**: DALL-E 3 creates 9:16 vertical cinematic images.
+- **AI Image Generation**: DALL-E 3 creates 9:16 vertical cinematic images (with Google Gemini Fallback).
 - **AI Voice Narration**: ElevenLabs natural speech synthesis.
 - **Automated Video Pipeline**: FFmpeg combines images, audio, and burns subtitles.
 - **Admin Dashboard**: Secure control panel for triggering and monitoring jobs.
@@ -16,7 +16,7 @@ A full-stack SaaS application that automatically generates vertical YouTube Shor
 
 - **Frontend**: Next.js 14 (App Router), Tailwind CSS, Framer Motion, Lucide React.
 - **Backend**: Node.js, Express, TypeScript, FFmpeg.
-- **AI**: OpenAI (GPT-4, DALL-E 3), ElevenLabs.
+- **AI**: OpenAI (GPT-4, DALL-E 3), Google Gemini (Imagen 3), ElevenLabs.
 - **Infrastructure**: Docker, Dokploy compatible.
 
 ## 🚦 Getting Started
@@ -27,6 +27,7 @@ A full-stack SaaS application that automatically generates vertical YouTube Shor
 - FFmpeg installed (for local backend development)
 - OpenAI API Key
 - ElevenLabs API Key
+- Google Gemini API Key (Optional, for fallback)
 
 ### Installation
 

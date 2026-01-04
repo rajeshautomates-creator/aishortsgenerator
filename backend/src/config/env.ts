@@ -11,6 +11,7 @@ interface Config {
     jwtSecret: string;
     uploadsDir: string;
     outputsDir: string;
+    geminiApiKey: string;
 }
 
 const config: Config = {
@@ -22,6 +23,7 @@ const config: Config = {
     jwtSecret: process.env.JWT_SECRET || 'your-secret-key-change-in-production',
     uploadsDir: process.env.UPLOADS_DIR || './uploads',
     outputsDir: process.env.OUTPUTS_DIR || './outputs',
+    geminiApiKey: (process.env.GEMINI_API_KEY || '').trim(),
 };
 
 // Validate required environment variables

@@ -3,6 +3,7 @@ import { jobStore, Job } from '../models/job.model.js';
 import { OpenAIService } from './openai.service.js';
 import { ElevenLabsService } from './elevenlabs.service.js';
 import { FFmpegService } from './ffmpeg.service.js';
+import { ImageProviderService } from './image-provider.service.js';
 import { FileManager } from '../utils/fileManager.js';
 import config from '../config/env.js';
 import logger from '../utils/logger.js';
@@ -77,10 +78,10 @@ export class JobService {
             jobStore.addLog(jobId, 'Voice narration generated.');
 
             // 4. Generate Images
-            jobStore.addLog(jobId, 'Generating images with DALL-E...');
+            jobStore.addLog(jobId, 'Generating images with Fallback (OpenAI -> Gemini)...');
             const imagePaths = [];
             for (let i = 0; i < scenes.length; i++) {
-                const imagePath = await OpenAIService.generateImage(scenes[i], jobDir);
+                const imagePath = await ImageProviderService.generateImageWithFallback(scenes[i], jobDir);
                 imagePaths.push(imagePath);
 
                 const currentProgress = 25 + Math.floor(((i + 1) / scenes.length) * 35);
