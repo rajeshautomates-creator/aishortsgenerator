@@ -84,6 +84,7 @@ export class ImageProviderService {
 
         // List of potential models to try. Order matters.
         const modelsToTry = [
+            'gemini-1.5-flash',
             'imagen-3.0-generate-001',
             'imagen-2.0-generate-001',
         ];
