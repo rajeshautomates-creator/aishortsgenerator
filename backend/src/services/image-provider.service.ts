@@ -72,6 +72,7 @@ export class ImageProviderService {
 
     /**
      * Generate image using Google Gemini (Imagen)
+     * Tries multiple model names to ensure compatibility
      */
     private static async generateWithGemini(scene: Scene, jobDir: string): Promise<string> {
         if (!config.geminiApiKey) {
@@ -81,25 +82,50 @@ export class ImageProviderService {
         // Gemini Prompt Format: Cinematic, 9:16 vertical, No text, Story scene based
         const geminiPrompt = `Cinematic 9:16 vertical shot, ${scene.imagePrompt}, professional photography, vibrant colors, no text, no words, story scene based, high quality, highly detailed`;
 
-        const model = genAI.getGenerativeModel({ model: 'imagen-3.0-generate-001' });
+        // List of potential models to try. Order matters.
+        const modelsToTry = [
+            'imagen-3.0-generate-001',
+            'imagen-2.0-generate-001',
+        ];
 
-        const result = await model.generateContent(geminiPrompt);
-        const response = await result.response;
+        let lastError;
 
-        // Note: Gemini API returns images as base64 in the response parts
-        const parts = response.candidates?.[0]?.content?.parts;
-        const imagePart = parts?.find(part => part.inlineData?.mimeType?.startsWith('image/'));
+        for (const modelName of modelsToTry) {
+            try {
+                logger.info(`[Gemini] Attempting to generate image with model: ${modelName}`);
+                const model = genAI.getGenerativeModel({ model: modelName });
 
-        if (!imagePart || !imagePart.inlineData?.data) {
-            throw new Error('No image data in Gemini response');
+                const result = await model.generateContent(geminiPrompt);
+                const response = await result.response;
+
+                // Note: Gemini API returns images as base64 in the response parts
+                const parts = response.candidates?.[0]?.content?.parts;
+                const imagePart = parts?.find(part => part.inlineData?.mimeType?.startsWith('image/'));
+
+                if (!imagePart || !imagePart.inlineData?.data) {
+                    throw new Error('No image data in Gemini response');
+                }
+
+                const imageBuffer = Buffer.from(imagePart.inlineData.data, 'base64');
+                const imagePath = path.join(jobDir, `scene_${scene.index}_gemini.png`);
+                await fs.writeFile(imagePath, imageBuffer);
+
+                logger.info(`[Gemini] Image saved: ${imagePath} using model ${modelName}`);
+                return imagePath;
+
+            } catch (error) {
+                const msg = error instanceof Error ? error.message : String(error);
+                logger.warn(`[Gemini] Model ${modelName} failed: ${msg}`);
+                lastError = error;
+
+                // If it's an API key error, don't retry other models, it won't help.
+                if (msg.includes('API key not valid')) {
+                    throw error;
+                }
+            }
         }
 
-        const imageBuffer = Buffer.from(imagePart.inlineData.data, 'base64');
-        const imagePath = path.join(jobDir, `scene_${scene.index}_gemini.png`);
-        await fs.writeFile(imagePath, imageBuffer);
-
-        logger.info(`[Gemini] Image saved: ${imagePath}`);
-        return imagePath;
+        throw new Error(`All Gemini models failed. Last error: ${lastError instanceof Error ? lastError.message : String(lastError)}`);
     }
 
     /**
