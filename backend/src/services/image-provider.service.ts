@@ -101,7 +101,7 @@ export class ImageProviderService {
             if (!imagePart || !imagePart.inlineData?.data) {
                 // If it returned text instead (common with non-image-gen models)
                 const textPart = parts?.find(part => part.text);
-                if (textPart) {
+                if (textPart && textPart.text) {
                     throw new Error(`Model ${modelName} returned text instead of image: "${textPart.text.substring(0, 100)}..."`);
                 }
                 throw new Error('No image data in Gemini response');
